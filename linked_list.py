@@ -49,6 +49,32 @@ class LinkedList:
             current_node = current_node.next
         print("None")
     
+    def delete_by_value(self, value):
+        """
+        It deletes a node based on the value that contains
+        """
+        if self.head is None:
+            return
+        
+        current_node = self.head
+        previous_node = None
+
+        if current_node.data == value:
+            self.head = current_node.next
+            current_node = None
+            return
+        
+        while current_node and current_node.data != value:
+            previous_node = current_node
+            current_node = current_node.next
+        
+        if current_node:
+            previous_node.next = current_node.next
+            current_node = None
+            return
+        else:
+            return # Node with data == value was not found
+
 
 
 def main():
